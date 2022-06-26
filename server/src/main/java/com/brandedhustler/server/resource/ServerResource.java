@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static java.time.LocalDate.*;
 import static java.util.Map.*;
@@ -32,8 +33,8 @@ public class ServerResource {
 
 
     @GetMapping("/list")
-    public ResponseEntity<Response> getServers(){
-
+    public ResponseEntity<Response> getServers() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         return ResponseEntity.ok(
                 Response.builder()
                 .timeStamp(now())
